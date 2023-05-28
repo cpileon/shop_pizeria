@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 
 
 
-const Detail = () =>{
+const Pizza = () =>{
     const { name } = useParams();
     const { datapizza, setDatapizza, pedido, setPedido, generarPedido } = useContext(MyContext)
 
@@ -27,8 +27,8 @@ const Detail = () =>{
                         <h4>Precio: ${pizza.price}</h4>
 
                     <div className="d-flex justify-content-between">
-                        <Link to="/"><Button>Volver</Button></Link>
-                        <Button>Añadir al carro</Button>
+                        <Link to="/"><Button className="btn btn-secondary">Volver</Button></Link>
+                        <Button className="btn btn-danger" onClick={()=> generarPedido(pizza.id, pizza.name, pizza.desc, pizza.img, pizza.price)}>Agregar al carro</Button>
                     </div>
                     </div>
                 </div>
@@ -38,4 +38,4 @@ const Detail = () =>{
     )
 };
 
-export default Detail;
+export default Pizza;

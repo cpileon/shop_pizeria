@@ -20,7 +20,7 @@ const Home = () => {
 
     const pizzaPage = (name) => {
         console.log(name);
-        navigate(`/detail/${name}`);
+        navigate(`/pizza/${name}`);
     }
 
 

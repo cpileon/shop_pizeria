@@ -12,7 +12,8 @@ import Navegacion from './assets/components/Navegacion'
 
 //Views
 import Home from './assets/views/Home';
-import Detail from "./assets/views/Detail";
+import Pizza from "./assets/views/Pizza";
+import Carrito from "./assets/views/Carrito";
 
 function App() {
   //Crear nueva propiedad en los datos de las pizzas y 
@@ -40,7 +41,8 @@ function App() {
         <div style={{marginTop: 50}}>
           <Routes>
             <Route path ="/" element={<Home/>}/>
-            <Route path ="/detail/:name" element={<Detail/>}/>
+            <Route path ="/pizza/:name" element={<Pizza/>}/>
+            <Route path="/carrito" element={<Carrito/>}/>
           </Routes>
         </div>
       </BrowserRouter>
