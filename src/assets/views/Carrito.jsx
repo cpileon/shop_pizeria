@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 
 
 const Carrito = () =>{
-    const { datapizza, setDatapizza, pedido, setPedido, generarPedido, valorTotal, setValorTotal } = useContext(MyContext)
+    const { datapizza, setDatapizza, pedido, setPedido, generarPedido, valorTotal, setValorTotal, addPizza } = useContext(MyContext)
     return(
         <>
         <Container >
@@ -27,7 +27,9 @@ const Carrito = () =>{
                         <div className="col">
                             <strong>Precio:</strong> ${pizza.price.toLocaleString('en-US')}
                         </div>
-                        Cantidad: {pizza.cantidad}
+                        <div className="col">
+                            Cantidad: <Button> - </Button> {pizza.cantidad} <Button onClick={()=>addPizza(pizza.id, pizza.price)}> + </Button>
+                        </div>
                     </div>
                 ))}
                 <h4>Total Pedido: ${valorTotal.toLocaleString('en-US')}</h4>
