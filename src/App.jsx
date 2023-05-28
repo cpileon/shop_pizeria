@@ -33,6 +33,27 @@ function App() {
         }
     }
 
+  //Función para disminuir cantidad de pizza al pedido
+    const substractPizza = (id, price) =>{
+      let search = pedido.find((p) => p.id == id)
+      console.log(search)
+      if (search){
+        let cantDown = pedido.findIndex((p) => p.id == id);
+        console.log(cantDown);
+        pedido[cantDown].cantidad--;
+        setValorTotal(valorTotal - price);
+
+        //confirmar que si es cantidad 0 se borre del Pedido
+        if(search.cantidad == 0){
+          pedido.splice(cantDown, 1);
+        }
+      }
+
+      if(pedido.length == 0){
+        alert("¡Tu carrito de compras ha quedado vacío!")
+      }
+    }
+
   //Función para agregar pizza al pedido
     const generarPedido = (id, name, desc, img, price) => {
       const itemPedido = {id, name, desc, img, price, cantidad: 1};
@@ -51,7 +72,7 @@ function App() {
     };
 
   //Crear los datos para el provider
-  const globalData = {datapizza, setDatapizza, pedido, setPedido, generarPedido, valorTotal, setValorTotal, addPizza};
+  const globalData = {datapizza, setDatapizza, pedido, setPedido, generarPedido, valorTotal, setValorTotal, addPizza, substractPizza};
 
 
   return (
