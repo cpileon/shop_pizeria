@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import data from './assets/data/pizzas.json'
+import pizzas from './assets/data/pizzas.json'
 //Contexto
 import MyContext from './Mycontext';
 
@@ -17,7 +17,6 @@ import Carrito from "./assets/views/Carrito";
 
 function App() {
   //Crear nueva propiedad en los datos de las pizzas y 
-  const pizzas = data.map(pizza => ({...pizza, cantidad: 0}));
   const [datapizza, setDatapizza] = useState(pizzas);
   const [pedido, setPedido] = useState([]);
   //Variable para calcular total en carrito
@@ -33,8 +32,7 @@ function App() {
         let cantUp = pedido.findIndex((p) => p.id == id);
         console.log("El producto ya está en el array en el índice: ", cantUp);
         pedido[cantUp].cantidad++;
-        let mult = pedido[cantUp].cantidad * pedido[cantUp].price;
-        setValorTotal(valorTotal + mult);
+        setValorTotal(valorTotal + price);
         alert(`Se agregó otra Pizza ${pedido[cantUp].name.charAt(0).toUpperCase() + pedido[cantUp].name.slice(1)} al carro.`);
 
       } else {
@@ -43,7 +41,6 @@ function App() {
         setValorTotal(valorTotal + price);
         alert(`Se agregó una Pizza ${itemPedido.name.charAt(0).toUpperCase() + itemPedido.name.slice(1)} al carro.`);
       }
-
     };
   
   //Crear los datos para el provider
