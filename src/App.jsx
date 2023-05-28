@@ -20,17 +20,34 @@ function App() {
   const pizzas = data.map(pizza => ({...pizza, cantidad: 0}));
   const [datapizza, setDatapizza] = useState(pizzas);
   const [pedido, setPedido] = useState([]);
+  //Variable para calcular total en carrito
+  const [valorTotal, setValorTotal] = useState(0);
 
   //Función para agregar pizza al pedido
     const generarPedido = (id, name, desc, img, price) => {
-      const itemPedido = {id, name, desc, img, price, cantidad: 1}
-      console.log(itemPedido)
-      setPedido([...pedido, {...itemPedido}])
-      console.log("El pedido es:", pedido)
-    }
+      const itemPedido = {id, name, desc, img, price, cantidad: 1};
+      console.log(itemPedido);
+
+      //Comprobar que la piza ya está en el carro. Al identificarla, aumenta la cantidad en 1
+      if(pedido.find((p) => p.id == id)){
+        let cantUp = pedido.findIndex((p) => p.id == id);
+        console.log("El producto ya está en el array en el índice: ", cantUp);
+        pedido[cantUp].cantidad++;
+        let mult = pedido[cantUp].cantidad * pedido[cantUp].price;
+        setValorTotal(valorTotal + mult);
+        alert(`Se agregó otra Pizza ${pedido[cantUp].name.charAt(0).toUpperCase() + pedido[cantUp].name.slice(1)} al carro.`);
+
+      } else {
+        setPedido([...pedido, {...itemPedido}]);
+        console.log("El pedido es:", pedido);
+        setValorTotal(valorTotal + price);
+        alert(`Se agregó una Pizza ${itemPedido.name.charAt(0).toUpperCase() + itemPedido.name.slice(1)} al carro.`);
+      }
+
+    };
   
   //Crear los datos para el provider
-  const globalData = {datapizza, setDatapizza, pedido, setPedido, generarPedido};
+  const globalData = {datapizza, setDatapizza, pedido, setPedido, generarPedido, valorTotal, setValorTotal};
 
 
   return (

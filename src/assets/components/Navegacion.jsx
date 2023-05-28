@@ -1,10 +1,16 @@
+import { useContext } from 'react';
+import { Link } from "react-router-dom";
+
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import { Link } from "react-router-dom";
+
+import MyContext from '../../Mycontext';
 
 
 
 const Navegacion = () => {
+    const { valorTotal } = useContext(MyContext)
+
     return (
         <>
             <Navbar bg="dark" variant="dark" fixed='top'>
@@ -22,7 +28,7 @@ const Navegacion = () => {
                     <Link to="/carrito">
                         <div className='d-flex'>
                             <h5 className='text-light m-1'> 🛒</h5>
-                            <h5 className='text-light m-1'> $0,000</h5>
+                            <h5 className='text-light m-1'>${valorTotal.toLocaleString('en-US')}</h5>
                         </div>
                     </Link>
                 </Container>

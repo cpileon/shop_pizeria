@@ -14,7 +14,7 @@ const Carrito = () =>{
             <h3 className="mt-3">¡Chequea tu pedido!</h3>
             {pedido.map((pizza, i)=>(
                 <div key={pizza.id}>
-                    {i+1} Pizza {pizza.name} Cantidad: {pizza.cantidad}
+                    {i+1} Pizza {pizza.name.charAt(0).toUpperCase() + pizza.name.slice(1)} Cantidad: {pizza.cantidad}
                     </div>
             ))}
             <div className="d-flex justify-content-between">
