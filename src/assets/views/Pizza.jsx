@@ -4,19 +4,19 @@ import MyContext from "../../Mycontext";
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-
+import Card from 'react-bootstrap/Card';
 
 
 const Pizza = () =>{
     const { name } = useParams();
-    const { datapizza, setDatapizza, pedido, setPedido, generarPedido } = useContext(MyContext)
+    const { datapizza, generarPedido } = useContext(MyContext);
 
     return(
-        <Container>
-        <div>
+        <Container className="p-4">
+        <Card className="shadow">
             {datapizza.filter(p => p.name === name).map((pizza)=>(
                 <div className="row row-cols-md-2 row-cols-1" key={pizza.id}>
-                    <div className="col p-4  text-center"><img src={pizza.img} style={{width: '80%'}} className="rounded"/></div>
+                    <div className="col p-4  text-center"><img src={pizza.img} style={{width: '80%'}} className="rounded shadow"/></div>
                     <div className="col p-4">
                         <h3>Pizza {pizza.name.charAt(0).toUpperCase() + pizza.name.slice(1)}</h3>
                         <hr></hr>
@@ -32,10 +32,10 @@ const Pizza = () =>{
                     </div>
                     </div>
                 </div>
-            ))}
-        </div>
+            ))};
+        </Card>
         </Container>
-    )
+    );
 };
 
 export default Pizza;

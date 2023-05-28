@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react'
-import './App.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import pizzas from './assets/data/pizzas.json'
+//Datos de JSON
+import pizzas from './assets/data/pizzas.json';
 //Contexto
 import MyContext from './Mycontext';
 
 //Componentes
-import Navegacion from './assets/components/Navegacion'
+import Navegacion from './assets/components/Navegacion';
 
 //Views
 import Home from './assets/views/Home';
@@ -30,13 +31,13 @@ function App() {
           pedido[cantUp].cantidad++;
           setValorTotal(valorTotal + price);
           alert(`Se agregó otra Pizza ${pedido[cantUp].name.charAt(0).toUpperCase() + pedido[cantUp].name.slice(1)} al carro.`);
-        }
-    }
+        };
+    };
 
   //Función para disminuir cantidad de pizza al pedido
     const substractPizza = (id, price) =>{
-      let search = pedido.find((p) => p.id == id)
-      console.log(search)
+      let search = pedido.find((p) => p.id == id);
+      console.log(search);
       if (search){
         let cantDown = pedido.findIndex((p) => p.id == id);
         console.log(cantDown);
@@ -46,11 +47,11 @@ function App() {
         //confirmar que si es cantidad 0 se borre del Pedido
         if(search.cantidad == 0){
           pedido.splice(cantDown, 1);
-        }
-      }
+        };
+      };
 
       if(pedido.length == 0){
-        alert("¡Tu carrito de compras ha quedado vacío!")
+        alert("¡Tu carrito de compras ha quedado vacío!");
       }
     }
 
@@ -61,14 +62,14 @@ function App() {
 
       //Comprobar que la piza ya está en el carro. Al identificarla, aumenta la cantidad en 1
       if(pedido.find((p) => p.id == id)){
-        addPizza(id, price)
+        addPizza(id, price);
 
       } else {
         setPedido([...pedido, {...itemPedido}]);
         console.log("El pedido es:", pedido);
         setValorTotal(valorTotal + price);
         alert(`Se agregó una Pizza ${itemPedido.name.charAt(0).toUpperCase() + itemPedido.name.slice(1)} al carro.`);
-      }
+      };
     };
 
   //Crear los datos para el provider
@@ -90,7 +91,7 @@ function App() {
       </BrowserRouter>
     </MyContext.Provider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

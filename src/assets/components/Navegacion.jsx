@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
 
 import MyContext from '../../Mycontext';
 
 
 
 const Navegacion = () => {
-    const { valorTotal } = useContext(MyContext)
+    const { valorTotal } = useContext(MyContext);
 
     return (
         <>
@@ -26,16 +28,18 @@ const Navegacion = () => {
                         <h5> Pizzería Mama Mía </h5>
                     </Navbar.Brand>
                     <Link to="/carrito">
-                        <div className='d-flex'>
-                            <h5 className='text-light m-1'> 🛒</h5>
-                            <h5 className='text-light m-1'>${valorTotal.toLocaleString('en-US')}</h5>
-                        </div>
+                        <Button className='btn btn-outline-light btn-dark'>
+                            <div className='d-flex'>
+                                <h5 className='text-light m-1'> 🛒</h5>
+                                <h5 className='text-light m-1'>${valorTotal.toLocaleString('en-US')}</h5>
+                            </div>
+                        </Button>
                     </Link>
                 </Container>
             </Navbar>
         </>
 
-    )
-}
+    );
+};
 
 export default Navegacion;

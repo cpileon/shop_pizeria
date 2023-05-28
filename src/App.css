@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(255, 252, 240);
+    background-image: radial-gradient(
+        circle at 100% 50%,
+        transparent 1rem,
+        #ffdede 1rem,
+        #ffdede 1.5rem,
+        transparent 1.5rem),
+    radial-gradient(
+        circle at 0% 50%,
+        transparent 1rem,
+        #ffdede 1rem,
+        #ffdede 1.5rem,
+        transparent 1.5rem);
+    background-size: 10rem 5rem;
+    background-position: 0 0, 0 2.5rem;
+}
+
+.footer{
+    background: rgba(255, 255, 255, 0.4);
+    margin:0;
+    padding-bottom: 1rem;
+}

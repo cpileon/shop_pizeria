@@ -5,7 +5,6 @@ import MyContext from "../../Mycontext";
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
 
 
 import Carrusel from "../components/Carrousel";
@@ -13,8 +12,7 @@ import Footer from "../components/Footer";
 
 
 const Home = () => {
-    const { datapizza, setDatapizza, pedido, setPedido, generarPedido } = useContext(MyContext)
-    const [name, setName] = useState("");
+    const { datapizza, generarPedido } = useContext(MyContext);
 
     const navigate = useNavigate();
 
@@ -43,11 +41,12 @@ const Home = () => {
                             <Button className="btn btn-danger" onClick={()=> generarPedido(pizza.id, pizza.name, pizza.desc, pizza.img, pizza.price)}>Agregar al carro</Button>
                         </div>
                     </Card>
-                ))}
+                ))};
                 </div>
             </div>
             <Footer />
         </>
-    )
-}
+    );
+};
+
 export default Home;
