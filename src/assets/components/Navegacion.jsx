@@ -5,17 +5,17 @@ import Container from 'react-bootstrap/Container';
 const Navegacion = () => {
     return (
         <>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark" fixed='top'>
                 <Container className="d-flex justify-content-between">
                     <Navbar.Brand className='d-flex'>
                         <img
-                        src=""
+                        src="../../src/imgs/pizza.svg"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
                         alt=""
                         />
-                        <h5>Pizería Mama Mía </h5>
+                        <h5> Pizería Mama Mía </h5>
                     </Navbar.Brand>
                     <div className='d-flex'>
                         <h5 className='text-light m-1'> 🛒</h5>

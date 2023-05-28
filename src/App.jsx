@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -9,19 +9,27 @@ import MyContext from './Mycontext';
 
 //Componentes
 import Navegacion from './assets/components/Navegacion'
-import Carrusel from './assets/components/Carrousel';
 
 //Views
 import Home from './assets/views/Home';
+import Detail from "./assets/views/Detail";
 
 function App() {
   //Crear nueva propiedad en los datos de las pizzas y 
   const pizzas = data.map(pizza => ({...pizza, cantidad: 0}));
-  console.log(pizzas);
   const [datapizza, setDatapizza] = useState(pizzas);
+  const [pedido, setPedido] = useState([]);
+
+  //Función para agregar pizza al pedido
+    const generarPedido = (id, name, desc, img, price) => {
+      const itemPedido = {id, name, desc, img, price, cantidad: 1}
+      console.log(itemPedido)
+      setPedido([...pedido, {...itemPedido}])
+      console.log("El pedido es:", pedido)
+    }
   
   //Crear los datos para el provider
-  const globalData = {datapizza, setDatapizza};
+  const globalData = {datapizza, setDatapizza, pedido, setPedido, generarPedido};
 
 
   return (
@@ -29,10 +37,12 @@ function App() {
     <MyContext.Provider value = { globalData }>
       <BrowserRouter>
         <Navegacion />
-        <Carrusel />
-        <Routes>
-          <Route path ="/" element={<Home/>}/>
-        </Routes>
+        <div style={{marginTop: 50}}>
+          <Routes>
+            <Route path ="/" element={<Home/>}/>
+            <Route path ="/detail/:name" element={<Detail/>}/>
+          </Routes>
+        </div>
       </BrowserRouter>
     </MyContext.Provider>
     </>
