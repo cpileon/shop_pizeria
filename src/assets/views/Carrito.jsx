@@ -48,7 +48,7 @@ const Carrito = () =>{
         </Container>
 
         </>
-    );
+    )
 };
 
 export default Carrito;
