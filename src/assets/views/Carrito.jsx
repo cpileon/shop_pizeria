@@ -38,7 +38,7 @@ const Carrito = () =>{
                             <Button onClick={()=>addPizza(pizza.id, pizza.price)} className="pt-0 btn-sm"> + </Button>
                         </div>
                     </div>
-                ))};
+                ))}
                 <h3 className="m-3">Total Pedido: ${valorTotal.toLocaleString('en-US')}</h3>
                 <div className="d-flex justify-content-between">
                 <Link to="/"><Button className="btn btn-secondary">Volver</Button></Link>
